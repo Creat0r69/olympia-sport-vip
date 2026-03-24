@@ -1,10 +1,22 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import { routing } from '@/i18n';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import '../globals.css';
+
+// Module-level export — must be outside the LocaleLayout function
+export const metadata: Metadata = {
+  title: 'OLYMPIA SPORT VIP — Premium Gym',
+  description: 'Join OLYMPIA SPORT VIP — a world-class gym offering weight training, cardio, group classes, personal training and nutrition coaching.',
+  openGraph: {
+    title: 'OLYMPIA SPORT VIP',
+    description: 'Forge Your Strength. Elevate Your Life.',
+    type: 'website',
+  },
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
