@@ -6,6 +6,7 @@
     "trainers": "Trainers",
     "gallery": "Gallery",
     "testimonials": "Testimonials",
+    "schedule": "Schedule",
     "contact": "Contact",
     "joinNow": "Join Now"
   },
@@ -33,6 +34,42 @@
     "groupClasses": { "title": "Group Classes", "desc": "Dynamic classes from HIIT to yoga, led by expert instructors." },
     "personalTraining": { "title": "Personal Training", "desc": "1-on-1 sessions tailored to your unique goals." },
     "nutrition": { "title": "Nutrition Coaching", "desc": "Expert nutrition plans to fuel your transformation." }
+  },
+  "schedule": {
+    "heading": "Class Schedule",
+    "eyebrow": "Our Schedule",
+    "subtitle": "March 23 – April 30",
+    "hours": "Mon–Sat: 07:00–22:00  ·  Sunday: 10:00–17:00",
+    "time": "Time",
+    "days": {
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat",
+      "sun": "Sun"
+    },
+    "classes": {
+      "absCore": "Abs & Core",
+      "stretching": "Stretching",
+      "mobility": "Mobility",
+      "circuitTraining": "Circuit Training",
+      "caf": "C.A.F",
+      "sportPrep": "Sport Prep",
+      "kidsClub": "Kids Club",
+      "ladiesOnly": "Ladies Only",
+      "calisthenics": "Calisthenics",
+      "orientalDance": "Oriental Dance",
+      "pilates": "Pilates",
+      "hiit": "HIIT",
+      "combat": "Combat",
+      "step": "Step",
+      "pump": "Pump",
+      "attack": "Attack",
+      "mensOnly": "Men Only",
+      "cross": "Cross"
+    }
   },
   "pricing": {
     "heading": "Membership Plans",

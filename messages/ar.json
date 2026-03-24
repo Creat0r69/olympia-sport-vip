@@ -6,6 +6,7 @@
     "trainers": "المدربون",
     "gallery": "المعرض",
     "testimonials": "آراء الأعضاء",
+    "schedule": "جدول الحصص",
     "contact": "تواصل معنا",
     "joinNow": "انضم الآن"
   },
@@ -33,6 +34,42 @@
     "groupClasses": { "title": "الدروس الجماعية", "desc": "دروس ديناميكية من HIIT إلى اليوغا بإشراف خبراء." },
     "personalTraining": { "title": "التدريب الشخصي", "desc": "جلسات فردية مصممة لأهدافك الخاصة." },
     "nutrition": { "title": "إرشاد التغذية", "desc": "خطط غذائية متخصصة لتسريع تحولك." }
+  },
+  "schedule": {
+    "heading": "جدول الحصص",
+    "eyebrow": "برنامجنا",
+    "subtitle": "٢٣ مارس – ٣٠ أبريل",
+    "hours": "الإثنين–السبت: ٠٧:٠٠–٢٢:٠٠  ·  الأحد: ١٠:٠٠–١٧:٠٠",
+    "time": "الوقت",
+    "days": {
+      "mon": "إثنين",
+      "tue": "ثلاثاء",
+      "wed": "أربعاء",
+      "thu": "خميس",
+      "fri": "جمعة",
+      "sat": "سبت",
+      "sun": "أحد"
+    },
+    "classes": {
+      "absCore": "عضلات البطن",
+      "stretching": "تمدد",
+      "mobility": "مرونة",
+      "circuitTraining": "تدريب دائري",
+      "caf": "C.A.F",
+      "sportPrep": "تحضير رياضي",
+      "kidsClub": "نادي الأطفال",
+      "ladiesOnly": "للسيدات فقط",
+      "calisthenics": "كاليستينيكس",
+      "orientalDance": "رقص شرقي",
+      "pilates": "بيلاتس",
+      "hiit": "HIIT",
+      "combat": "كومبات",
+      "step": "ستيب",
+      "pump": "بامب",
+      "attack": "أتاك",
+      "mensOnly": "للرجال فقط",
+      "cross": "كروس"
+    }
   },
   "pricing": {
     "heading": "خطط العضوية",
