@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash \"C:/Users/thecr/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.5/skills/brainstorming/scripts/start-server.sh\" --project-dir \"C:/Users/thecr/Desktop/vip-gym\")",
+      "Bash(echo \"y:*)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir no --import-alias \"@/*\")",
+      "Bash(npx:*)",
+      "Bash(cp .gitignore /c/Users/thecr/Desktop/vip-gym/)",
+      "Bash(cp eslint.config.mjs /c/Users/thecr/Desktop/vip-gym/)",
+      "Bash(cp next-env.d.ts /c/Users/thecr/Desktop/vip-gym/)",
+      "Bash(cp package.json /c/Users/thecr/Desktop/vip-gym/)",
+      "Bash(cp package-lock.json /c/Users/thecr/Desktop/vip-gym/)",
+      "Bash(cp -r /c/Users/thecr/Desktop/vip-gym-temp/app /c/Users/thecr/Desktop/vip-gym/)",
+      "Bash(cp -r /c/Users/thecr/Desktop/vip-gym-temp/public /c/Users/thecr/Desktop/vip-gym/)",
+      "Bash(cp -r /c/Users/thecr/Desktop/vip-gym-temp/node_modules /c/Users/thecr/Desktop/vip-gym/)",
+      "Bash(ls /c/Users/thecr/Desktop/vip-gym/*.config*)",
+      "Bash(npm install:*)",
+      "Bash(node:*)",
+      "Bash(grep '\"\"type\"\"' /c/Users/thecr/Desktop/vip-gym/package.json)",
+      "Bash(timeout 20 npm run dev)",
+      "Bash(git init:*)",
+      "Bash(git:*)",
+      "Bash(node -e \":*)",
+      "Bash(npm run:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/)",
+      "Bash(npm test:*)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({k:d[k] for k in [''''main'''',''''module'''',''''exports''''] if k in d}, indent=2\\)\\)\")"
+    ]
+  }
+}
