@@ -13,7 +13,7 @@ export default function Services() {
   const t = useTranslations('services');
 
   return (
-    <SectionWrapper id="services">
+    <SectionWrapper id="services" className="bg-surface/20">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-black text-white mb-3">{t('heading')}</h2>
         <p className="text-muted">{t('subtitle')}</p>

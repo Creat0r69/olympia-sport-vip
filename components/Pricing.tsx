@@ -28,7 +28,7 @@ export default function Pricing() {
             >
               {isVip && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black text-xs font-bold px-4 py-1 rounded-full">
-                  BEST VALUE
+                  {t('bestValue')}
                 </span>
               )}
               <h3 className={`text-xl font-black mb-2 ${isVip ? 'text-accent' : 'text-white'}`}>

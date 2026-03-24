@@ -15,6 +15,7 @@
     "ctaSecondary": "View Plans"
   },
   "about": {
+    "eyebrow": "About Us",
     "heading": "About OLYMPIA SPORT VIP",
     "body": "We are more than a gym — we are a community dedicated to excellence, strength, and transformation.",
     "stats": {
@@ -51,6 +52,7 @@
       "price": "99",
       "features": ["24/7 gym access", "Unlimited group classes", "Priority locker", "Free parking", "4 PT sessions/month", "Nutrition coaching", "VIP lounge access"]
     },
+    "bestValue": "BEST VALUE",
     "perMonth": "/ month",
     "cta": "Get Started"
   },

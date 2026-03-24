@@ -15,7 +15,7 @@ export default function About() {
     <SectionWrapper id="about">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-3">About Us</p>
+          <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-3">{t('eyebrow')}</p>
           <h2 className="text-4xl font-black text-white mb-6">{t('heading')}</h2>
           <p className="text-muted text-lg leading-relaxed">{t('body')}</p>
         </div>
