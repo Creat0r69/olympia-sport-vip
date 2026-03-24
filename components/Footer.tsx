@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 
-const NAV_LINKS = ['about', 'services', 'pricing', 'trainers', 'gallery', 'testimonials', 'contact'] as const;
+const NAV_LINKS = ['about', 'services', 'schedule', 'pricing', 'trainers', 'gallery', 'testimonials', 'contact'] as const;
 const SOCIALS = ['Instagram', 'Facebook', 'Twitter'] as const;
 
 export default function Footer() {

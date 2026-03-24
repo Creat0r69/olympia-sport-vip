@@ -1,6 +1,7 @@
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Services from '@/components/Services';
+import Schedule from '@/components/Schedule';
 import Pricing from '@/components/Pricing';
 import Trainers from '@/components/Trainers';
 import Gallery from '@/components/Gallery';
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Hero />
       <About />
       <Services />
+      <Schedule />
       <Pricing />
       <Trainers />
       <Gallery />
