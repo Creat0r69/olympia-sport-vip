@@ -56,7 +56,7 @@ export default function Contact() {
             className="w-full bg-surface border border-surface text-white placeholder-muted rounded px-4 py-3 focus:outline-none focus:border-accent"
           />
           <input
-            type="text"
+            type="tel"
             placeholder={t('phone')}
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
@@ -84,15 +84,15 @@ export default function Contact() {
         {/* Info + Map placeholder */}
         <div className="space-y-6">
           <div>
-            <p className="text-accent text-sm font-semibold mb-1">Address</p>
+            <p className="text-accent text-sm font-semibold mb-1">{t('address_heading')}</p>
             <p className="text-muted">{t('address')}</p>
           </div>
           <div>
-            <p className="text-accent text-sm font-semibold mb-1">Phone</p>
+            <p className="text-accent text-sm font-semibold mb-1">{t('phone_heading')}</p>
             <p className="text-muted">{t('phone_label')}</p>
           </div>
           <div>
-            <p className="text-accent text-sm font-semibold mb-1">Email</p>
+            <p className="text-accent text-sm font-semibold mb-1">{t('email_heading')}</p>
             <p className="text-muted">{t('email_label')}</p>
           </div>
           <div className="rounded overflow-hidden h-48 bg-surface flex items-center justify-center text-muted text-sm">

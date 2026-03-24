@@ -78,12 +78,17 @@
     "send": "Send Message",
     "success": "Message sent! We'll be in touch soon.",
     "error": "Something went wrong. Please try again.",
+    "address_heading": "Address",
+    "phone_heading": "Phone",
+    "email_heading": "Email",
     "address": "123 Champion Street, City",
     "phone_label": "+1 (555) 000-0000",
     "email_label": "info@olympiasportvip.com"
   },
   "footer": {
+    "quickLinks": "Quick Links",
+    "followUs": "Follow Us",
     "tagline": "Forge Your Strength.",
-    "copyright": "© 2024 OLYMPIA SPORT VIP. All rights reserved."
+    "copyright": "© 2026 OLYMPIA SPORT VIP. All rights reserved."
   }
 }

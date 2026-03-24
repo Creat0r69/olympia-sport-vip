@@ -16,7 +16,7 @@ export default function Footer() {
             <p className="text-muted text-sm">{t('tagline')}</p>
           </div>
           <div>
-            <p className="text-white font-semibold mb-3">Quick Links</p>
+            <p className="text-white font-semibold mb-3">{t('quickLinks')}</p>
             <ul className="space-y-2">
               {NAV_LINKS.map((key) => (
                 <li key={key}>
@@ -28,7 +28,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <p className="text-white font-semibold mb-3">Follow Us</p>
+            <p className="text-white font-semibold mb-3">{t('followUs')}</p>
             <div className="flex gap-4">
               {SOCIALS.map((s) => (
                 <a key={s} href="#" className="text-muted hover:text-accent text-sm transition-colors">

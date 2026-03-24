@@ -78,12 +78,17 @@
     "send": "إرسال الرسالة",
     "success": "تم الإرسال! سنتواصل معك قريباً.",
     "error": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+    "address_heading": "العنوان",
+    "phone_heading": "الهاتف",
+    "email_heading": "البريد الإلكتروني",
     "address": "123 شارع البطل، المدينة",
     "phone_label": "+1 (555) 000-0000",
     "email_label": "info@olympiasportvip.com"
   },
   "footer": {
+    "quickLinks": "روابط سريعة",
+    "followUs": "تابعنا",
     "tagline": "ابنِ قوتك.",
-    "copyright": "© 2024 أولمبيا سبورت VIP. جميع الحقوق محفوظة."
+    "copyright": "© 2026 أولمبيا سبورت VIP. جميع الحقوق محفوظة."
   }
 }
