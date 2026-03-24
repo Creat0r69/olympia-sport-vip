@@ -1,0 +1,12 @@
+{
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "pricing": "Pricing",
+    "trainers": "Trainers",
+    "gallery": "Gallery",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "joinNow": "Join Now"
+  }
+}
