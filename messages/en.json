@@ -8,5 +8,80 @@
     "testimonials": "Testimonials",
     "contact": "Contact",
     "joinNow": "Join Now"
+  },
+  "hero": {
+    "tagline": "Forge Your Strength. Elevate Your Life.",
+    "cta": "Join Now",
+    "ctaSecondary": "View Plans"
+  },
+  "about": {
+    "heading": "About OLYMPIA SPORT VIP",
+    "body": "We are more than a gym — we are a community dedicated to excellence, strength, and transformation.",
+    "stats": {
+      "years": "Years of Excellence",
+      "members": "Active Members",
+      "trainers": "Certified Trainers",
+      "equipment": "Premium Equipment"
+    }
+  },
+  "services": {
+    "heading": "Our Services",
+    "subtitle": "Everything you need to reach your peak",
+    "weightTraining": { "title": "Weight Training", "desc": "State-of-the-art free weights and machines for every level." },
+    "cardio": { "title": "Cardio Zone", "desc": "Full cardio suite with treadmills, bikes, and rowing machines." },
+    "groupClasses": { "title": "Group Classes", "desc": "Dynamic classes from HIIT to yoga, led by expert instructors." },
+    "personalTraining": { "title": "Personal Training", "desc": "1-on-1 sessions tailored to your unique goals." },
+    "nutrition": { "title": "Nutrition Coaching", "desc": "Expert nutrition plans to fuel your transformation." }
+  },
+  "pricing": {
+    "heading": "Membership Plans",
+    "subtitle": "Choose the plan that fits your goals",
+    "basic": {
+      "name": "Basic",
+      "price": "29",
+      "features": ["Gym access (6am–10pm)", "Locker room", "Free parking"]
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "59",
+      "features": ["24/7 gym access", "Group classes included", "Locker room", "Free parking", "1 PT session/month"]
+    },
+    "vip": {
+      "name": "VIP",
+      "price": "99",
+      "features": ["24/7 gym access", "Unlimited group classes", "Priority locker", "Free parking", "4 PT sessions/month", "Nutrition coaching", "VIP lounge access"]
+    },
+    "perMonth": "/ month",
+    "cta": "Get Started"
+  },
+  "trainers": {
+    "heading": "Meet Our Trainers",
+    "subtitle": "World-class coaches committed to your success"
+  },
+  "gallery": {
+    "heading": "Our Facility",
+    "subtitle": "Built for champions"
+  },
+  "testimonials": {
+    "heading": "What Members Say",
+    "subtitle": "Real results, real stories"
+  },
+  "contact": {
+    "heading": "Get In Touch",
+    "subtitle": "We'd love to hear from you",
+    "name": "Your Name",
+    "email": "Your Email",
+    "phone": "Phone (optional)",
+    "message": "Your Message",
+    "send": "Send Message",
+    "success": "Message sent! We'll be in touch soon.",
+    "error": "Something went wrong. Please try again.",
+    "address": "123 Champion Street, City",
+    "phone_label": "+1 (555) 000-0000",
+    "email_label": "info@olympiasportvip.com"
+  },
+  "footer": {
+    "tagline": "Forge Your Strength.",
+    "copyright": "© 2024 OLYMPIA SPORT VIP. All rights reserved."
   }
 }
