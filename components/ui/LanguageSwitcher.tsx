@@ -7,8 +7,9 @@ export default function LanguageSwitcher({ locale }: { locale: string }) {
 
   const toggle = () => {
     const next = locale === 'en' ? 'ar' : 'en';
-    const newPath = pathname.replace(`/${locale}`, `/${next}`);
-    router.push(newPath);
+    const segments = pathname.split('/');
+    segments[1] = next;
+    router.push(segments.join('/'));
   };
 
   return (

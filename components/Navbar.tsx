@@ -67,7 +67,7 @@ export default function Navbar({ locale }: { locale: string }) {
               {t(key)}
             </a>
           ))}
-          <a href="#contact" className="bg-accent text-black font-bold text-sm px-4 py-2 rounded text-center">
+          <a href="#contact" className="bg-accent text-black font-bold text-sm px-4 py-2 rounded text-center hover:bg-accent/80 transition-colors">
             {t('joinNow')}
           </a>
         </div>
