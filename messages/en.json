@@ -72,26 +72,15 @@
     }
   },
   "pricing": {
-    "heading": "Membership Plans",
-    "subtitle": "Choose the plan that fits your goals",
-    "basic": {
-      "name": "Basic",
-      "price": "29",
-      "features": ["Gym access (6am–10pm)", "Locker room", "Free parking"]
-    },
-    "pro": {
-      "name": "Pro",
-      "price": "59",
-      "features": ["24/7 gym access", "Group classes included", "Locker room", "Free parking", "1 PT session/month"]
-    },
-    "vip": {
-      "name": "VIP",
-      "price": "99",
-      "features": ["24/7 gym access", "Unlimited group classes", "Priority locker", "Free parking", "4 PT sessions/month", "Nutrition coaching", "VIP lounge access"]
-    },
+    "heading": "Change Your Life",
+    "subtitle": "March 19 – April 30",
     "bestValue": "BEST VALUE",
-    "perMonth": "/ month",
-    "cta": "Get Started"
+    "cta": "Get Started",
+    "months": "{count} months",
+    "plans": {
+      "plateau": "Plateau + Cours",
+      "vip": "VIP Program"
+    }
   },
   "trainers": {
     "heading": "Meet Our Trainers",
