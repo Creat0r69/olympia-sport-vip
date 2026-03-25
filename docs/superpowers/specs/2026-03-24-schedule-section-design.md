@@ -208,42 +208,68 @@ Same structure with Arabic translations (RTL rendering handled by existing `dir=
 
 ### Structure
 
+```tsx
+<SectionWrapper id="schedule">
+  <div className="text-center mb-12">
+    {/* Eyebrow — matches About.tsx pattern */}
+    <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-3">
+      {t('eyebrow')}
+    </p>
+    <h2 className="text-4xl font-black text-white mb-3">{t('heading')}</h2>
+    <p className="text-muted">{t('subtitle')}</p>
+  </div>
+
+  {/* Horizontally scrollable table wrapper */}
+  <div className="overflow-x-auto rounded-xl border border-surface">
+    <table className="w-full border-collapse min-w-[600px]">
+      <thead>
+        <tr>
+          <th>{t('time')}</th>
+          {DAY_KEYS.map(day => <th key={day}>{t(`days.${day}`)}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {schedule.map(slot => (
+          <tr key={slot.time}>
+            <td>{slot.time}</td>
+            {slot.days.map((cell, i) => (
+              <td key={i}>
+                {cell.type === 'empty' ? '—' : (
+                  <>
+                    {t(`classes.${cell.key}`)}
+                    {cell.subKey && (
+                      <span className="block text-xs text-muted mt-0.5">
+                        {t(`classes.${cell.subKey}`)}
+                      </span>
+                    )}
+                  </>
+                )}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  {/* Opening hours note */}
+  <p className="text-muted text-sm text-center mt-6">{t('hours')}</p>
+</SectionWrapper>
 ```
-<section id="schedule">
-  <SectionWrapper>
-    <!-- Eyebrow label -->
-    <!-- Heading -->
-    <!-- Subtitle (date range) -->
-    <!-- Horizontally scrollable table container -->
-      <table>
-        <thead> — day headers (Mon–Sun) with Time label first </thead>
-        <tbody>
-          {schedule.map(slot => (
-            <tr>
-              <td> {slot.time} </td>
-              {slot.days.map(cell => (
-                <td> class name OR "—" </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    <!-- Opening hours note -->
-  </SectionWrapper>
-</section>
-```
+
+**Note on `subKey` resolution:** Both `key` and `subKey` resolve via `t(\`classes.${cell.key}\`)` and `t(\`classes.${cell.subKey}\`)` respectively — both live under the same `schedule.classes.*` namespace.
 
 ### Visual details
 
 - **Background:** `#0a0a0a` (matches site)
-- **Table border:** `1px solid #222`, `border-radius: 12px`, `overflow: hidden`
-- **Header row:** `background: #111`, day names in gold `#c9a84c`, uppercase, letter-spacing
-- **Time column:** `background: #111`, gold text, sticky left on scroll (optional enhancement)
+- **Table border:** `1px solid #222` (`border-surface`), `border-radius: 12px`, `overflow: hidden`
+- **Header row:** `background: #111`, day names in gold (`text-accent`), uppercase, letter-spacing
+- **Time column:** `background: #111`, gold text. Optional sticky: use `sticky ltr:left-0 rtl:right-0` — RTL requires right-sticky, not left-sticky
 - **Class cells:** alternate row backgrounds `#0a0a0a` / `#111111` for readability
-- **Empty cells:** `—` in `#333` (dimmed)
-- **Cells with `subKey`** (e.g. Ladies Only + Calisthenics): main key on one line, subKey in smaller `#a0a0a0` text below
+- **Empty cells:** `—` in dimmed color (`text-muted/30`)
+- **Cells with `subKey`:** main class name on one line, subKey label in `text-xs text-muted` below
 - **Mobile:** table wrapped in `overflow-x: auto` container; no layout breakage
-- **Animation:** Framer Motion `fadeUp` on section entry (consistent with other sections)
+- **Animation:** handled automatically by `SectionWrapper` (`motion.section` with `whileInView` fade-up) — no additional Framer Motion wrapper needed
 
 ---
 
@@ -262,13 +288,21 @@ import Schedule from '@/components/Schedule';
 
 ---
 
-## 6. Navbar
+## 6. Navbar & Footer
 
-Add "Schedule" / "جدول الحصص" anchor link (`#schedule`) to:
-- `components/Navbar.tsx` — add link between Services and Pricing
-- `messages/en.json` → `nav.schedule: "Schedule"`
-- `messages/ar.json` → `nav.schedule: "جدول الحصص"`
-- `components/Footer.tsx` — add to quick links
+Both `components/Navbar.tsx` and `components/Footer.tsx` share a `NAV_LINKS` constant (defined separately in each file):
+
+```ts
+const NAV_LINKS = ['about', 'services', 'pricing', 'trainers', 'gallery', 'testimonials', 'contact'] as const;
+```
+
+In **both files**, insert `'schedule'` between `'services'` and `'pricing'`:
+
+```ts
+const NAV_LINKS = ['about', 'services', 'schedule', 'pricing', 'trainers', 'gallery', 'testimonials', 'contact'] as const;
+```
+
+Also add to `messages/en.json` → `nav.schedule: "Schedule"` and `messages/ar.json` → `nav.schedule: "جدول الحصص"`.
 
 ---
 
