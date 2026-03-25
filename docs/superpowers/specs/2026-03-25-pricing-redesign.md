@@ -1,0 +1,210 @@
+# Pricing Section Redesign — Design Spec
+
+**Date:** 2026-03-25
+**Feature:** Replace 3-tier monthly pricing with 2-plan × 3-duration promotional pricing
+**Parent spec:** `2026-03-24-olympia-sport-vip-design.md`
+
+---
+
+## 1. Overview
+
+Replace the current 3-card (Basic / Pro / VIP) pricing section with a 2-plan layout — **Plateau + Cours** and **VIP Program** — each offering 3 duration options (3, 6, 12 months) with a promotional strikethrough original price and a highlighted discounted price. Currency changes from `$` to `dt` (Tunisian Dinar).
+
+---
+
+## 2. Data Architecture
+
+### 2.1 `data/pricing.ts`
+
+Holds the two plans with their duration rows. Plan names and duration labels are i18n keys. Prices are plain numbers (easy to update each season without touching components or translation files).
+
+```ts
+export interface PricingDuration {
+  months: 3 | 6 | 12;
+  original: number;
+  discounted: number;
+}
+
+export interface PricingPlan {
+  key: string;          // i18n key for plan name, e.g. 'plateau'
+  icon: string;         // emoji icon
+  highlight: boolean;   // true = gold border + "BEST VALUE" badge
+  durations: PricingDuration[];
+}
+
+export const plans: PricingPlan[] = [
+  {
+    key: 'plateau',
+    icon: '🏋️',
+    highlight: false,
+    durations: [
+      { months: 3,  original: 210, discounted: 168 },
+      { months: 6,  original: 390, discounted: 312 },
+      { months: 12, original: 720, discounted: 576 },
+    ],
+  },
+  {
+    key: 'vip',
+    icon: '👑',
+    highlight: true,
+    durations: [
+      { months: 3,  original: 290, discounted: 232 },
+      { months: 6,  original: 540, discounted: 432 },
+      { months: 12, original: 960, discounted: 768 },
+    ],
+  },
+];
+```
+
+---
+
+## 3. i18n Strings
+
+### 3.1 `messages/en.json` — replace existing `pricing` block
+
+```json
+"pricing": {
+  "heading": "Change Your Life",
+  "subtitle": "March 19 – April 30",
+  "bestValue": "BEST VALUE",
+  "cta": "Get Started",
+  "months": "{count} months",
+  "plans": {
+    "plateau": "Plateau + Cours",
+    "vip": "VIP Program"
+  }
+}
+```
+
+### 3.2 `messages/ar.json` — replace existing `pricing` block
+
+```json
+"pricing": {
+  "heading": "بدّل حياتك",
+  "subtitle": "١٩ مارس – ٣٠ أبريل",
+  "bestValue": "أفضل قيمة",
+  "cta": "ابدأ الآن",
+  "months": "{count} أشهر",
+  "plans": {
+    "plateau": "الصالة + الدروس",
+    "vip": "برنامج VIP"
+  }
+}
+```
+
+**Note:** The `months` key uses ICU message format with a `count` variable, supported natively by next-intl. Usage: `t('months', { count: duration.months })`.
+
+**Keys removed:** `basic`, `pro`, `perMonth`, `basic.name`, `basic.price`, `basic.features`, `pro.name`, `pro.price`, `pro.features`, `vip.name`, `vip.price`, `vip.features` — all replaced by the new structure above.
+
+---
+
+## 4. Component — `components/Pricing.tsx`
+
+### Structure
+
+```tsx
+import { useTranslations } from 'next-intl';
+import SectionWrapper from './ui/SectionWrapper';
+import { plans } from '@/data/pricing';
+
+export default function Pricing() {
+  const t = useTranslations('pricing');
+
+  return (
+    <SectionWrapper id="pricing">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-black text-white mb-3">{t('heading')}</h2>
+        <p className="text-muted">{t('subtitle')}</p>
+      </div>
+
+      {/* 2-column plan grid */}
+      <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+        {plans.map((plan) => (
+          <div
+            key={plan.key}
+            className={`rounded-2xl p-7 flex flex-col relative ${
+              plan.highlight
+                ? 'bg-surface border-2 border-accent'
+                : 'bg-surface border border-white/10'
+            }`}
+          >
+            {/* BEST VALUE badge */}
+            {plan.highlight && (
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black text-xs font-black px-4 py-1 rounded-full whitespace-nowrap">
+                {t('bestValue')}
+              </span>
+            )}
+
+            {/* Plan header */}
+            <div className="text-2xl mb-2">{plan.icon}</div>
+            <h3 className={`text-lg font-black mb-6 ${plan.highlight ? 'text-accent' : 'text-white'}`}>
+              {t(`plans.${plan.key}`)}
+            </h3>
+
+            {/* Duration rows */}
+            <div className="flex-1 divide-y divide-white/10">
+              {plan.durations.map((d, i) => (
+                <div key={d.months} className="flex items-center justify-between py-3">
+                  <span className="text-muted text-sm font-semibold">
+                    {t('months', { count: d.months })}
+                  </span>
+                  <div className="text-right">
+                    <span className="text-muted/40 text-xs line-through block">
+                      {d.original} dt
+                    </span>
+                    <span className="text-accent font-black text-xl">
+                      {d.discounted} dt
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <a
+              href="#contact"
+              className={`mt-6 text-center font-bold py-3 rounded-lg transition-colors ${
+                plan.highlight
+                  ? 'bg-accent text-black hover:bg-accent/80'
+                  : 'border border-white text-white hover:bg-white hover:text-black'
+              }`}
+            >
+              {t('cta')}
+            </a>
+          </div>
+        ))}
+      </div>
+    </SectionWrapper>
+  );
+}
+```
+
+### Visual details
+
+- **Grid:** `md:grid-cols-2`, max-width `2xl` centered — cards don't stretch full width on large screens
+- **Highlight card (VIP):** `border-2 border-accent` + gold "BEST VALUE" badge + `text-accent` plan name + filled gold CTA button
+- **Regular card (Plateau):** `border border-white/10` + white plan name + outline CTA button
+- **Duration rows:** separated by `divide-y divide-white/10`; original price `line-through text-muted/40`; discounted price `text-accent font-black text-xl`
+- **Currency:** `dt` appended inline as a string literal after the number — not a translation key
+- **Animation:** `SectionWrapper` handles Framer Motion fade-up — no extra wrapper needed
+
+---
+
+## 5. Files Changed
+
+| Action | File |
+|--------|------|
+| Create | `data/pricing.ts` |
+| Modify | `components/Pricing.tsx` — full replacement |
+| Modify | `messages/en.json` — replace `pricing` block |
+| Modify | `messages/ar.json` — replace `pricing` block |
+
+---
+
+## 6. Out of Scope
+
+- Duration toggle / tab switcher UI
+- Promotional countdown timer
+- Online payment / checkout
+- Plan comparison table
