@@ -1,12 +1,10 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import SectionWrapper from './ui/SectionWrapper';
 
-const PHOTOS = Array.from({ length: 8 }, (_, i) => ({
-  id: i + 1,
-  label: `Photo ${i + 1}`,
-}));
+const PHOTOS = Array.from({ length: 20 }, (_, i) => `/${i + 1}.jpg`);
 
 export default function Gallery() {
   const t = useTranslations('gallery');
@@ -20,16 +18,19 @@ export default function Gallery() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        {PHOTOS.map((photo) => (
+        {PHOTOS.map((src, i) => (
           <button
-            key={photo.id}
-            onClick={() => setSelected(photo.id)}
-            className="aspect-square bg-surface rounded overflow-hidden hover:opacity-80 transition-opacity"
-            aria-label={photo.label}
+            key={src}
+            onClick={() => setSelected(i)}
+            className="aspect-square rounded overflow-hidden hover:opacity-80 transition-opacity relative"
+            aria-label={`Gallery photo ${i + 1}`}
           >
-            <div className="w-full h-full bg-gradient-to-br from-surface to-background flex items-center justify-center text-muted text-xs">
-              {photo.label}
-            </div>
+            <Image
+              src={src}
+              alt={`Gallery photo ${i + 1}`}
+              fill
+              className="object-cover"
+            />
           </button>
         ))}
       </div>
@@ -43,16 +44,40 @@ export default function Gallery() {
           aria-modal="true"
           aria-label="Photo lightbox"
         >
-          <div className="max-w-4xl w-full aspect-video bg-surface rounded flex items-center justify-center">
-            <p className="text-muted">Photo {selected}</p>
+          <div className="relative max-w-4xl w-full aspect-video">
+            <Image
+              src={PHOTOS[selected]}
+              alt={`Gallery photo ${selected + 1}`}
+              fill
+              className="object-contain"
+            />
           </div>
           <button
-            className="absolute top-4 right-4 text-white text-2xl"
-            onClick={() => setSelected(null)}
+            className="absolute top-4 right-4 text-white text-2xl bg-black/50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/80 transition-colors"
+            onClick={(e) => { e.stopPropagation(); setSelected(null); }}
             aria-label="Close lightbox"
           >
             ✕
           </button>
+          {/* Prev / Next */}
+          {selected > 0 && (
+            <button
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-2xl bg-black/50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/80 transition-colors"
+              onClick={(e) => { e.stopPropagation(); setSelected(selected - 1); }}
+              aria-label="Previous photo"
+            >
+              ‹
+            </button>
+          )}
+          {selected < PHOTOS.length - 1 && (
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-2xl bg-black/50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/80 transition-colors"
+              onClick={(e) => { e.stopPropagation(); setSelected(selected + 1); }}
+              aria-label="Next photo"
+            >
+              ›
+            </button>
+          )}
         </div>
       )}
     </SectionWrapper>
