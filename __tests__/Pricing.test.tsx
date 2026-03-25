@@ -8,27 +8,11 @@ const messages = {
     subtitle: 'March 19 – April 30',
     bestValue: 'BEST VALUE',
     cta: 'Get Started',
-    perMonth: '/month',
     months: '{count} months',
     plans: {
+      basic: 'Basic',
       plateau: 'Plateau + Cours',
       vip: 'VIP Program',
-    },
-    // Minimal required for current component to render (will be replaced in implementation)
-    basic: {
-      name: 'Basic Plan',
-      price: '29',
-      features: [],
-    },
-    pro: {
-      name: 'Pro Plan',
-      price: '49',
-      features: [],
-    },
-    vip: {
-      name: 'VIP Plan',
-      price: '99',
-      features: [],
     },
   },
 };
@@ -52,8 +36,9 @@ describe('Pricing', () => {
     expect(screen.getByText('March 19 – April 30')).toBeInTheDocument();
   });
 
-  it('renders both plan names', () => {
+  it('renders all three plan names', () => {
     renderPricing();
+    expect(screen.getByText('Basic')).toBeInTheDocument();
     expect(screen.getByText('Plateau + Cours')).toBeInTheDocument();
     expect(screen.getByText('VIP Program')).toBeInTheDocument();
   });
@@ -63,24 +48,34 @@ describe('Pricing', () => {
     expect(screen.getByText('BEST VALUE')).toBeInTheDocument();
   });
 
-  it('renders original prices with strikethrough for both plans', () => {
+  it('renders the basic plan price', () => {
+    renderPricing();
+    expect(screen.getByText('80 dt')).toBeInTheDocument();
+  });
+
+  it('renders original prices with strikethrough for promo plans', () => {
     renderPricing();
     expect(screen.getByText('210 dt')).toBeInTheDocument();
     expect(screen.getByText('290 dt')).toBeInTheDocument();
   });
 
-  it('renders discounted prices for both plans', () => {
+  it('renders discounted prices for promo plans', () => {
     renderPricing();
     expect(screen.getByText('168 dt')).toBeInTheDocument();
     expect(screen.getByText('232 dt')).toBeInTheDocument();
   });
 
-  it('renders two CTA buttons', () => {
+  it('renders three CTA buttons', () => {
     renderPricing();
-    expect(screen.getAllByText('Get Started')).toHaveLength(2);
+    expect(screen.getAllByText('Get Started')).toHaveLength(3);
   });
 
-  it('renders 3-month duration label', () => {
+  it('renders 1-month duration label for basic plan', () => {
+    renderPricing();
+    expect(screen.getAllByText(/1 months/).length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('renders 3-month duration label for promo plans', () => {
     renderPricing();
     expect(screen.getAllByText(/3 months/).length).toBeGreaterThanOrEqual(1);
   });

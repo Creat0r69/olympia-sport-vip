@@ -78,6 +78,7 @@
     "cta": "Get Started",
     "months": "{count} months",
     "plans": {
+      "basic": "Basic",
       "plateau": "Plateau + Cours",
       "vip": "VIP Program"
     }

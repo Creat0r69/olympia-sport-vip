@@ -1,5 +1,5 @@
 export interface PricingDuration {
-  months: 3 | 6 | 12;
+  months: 1 | 3 | 6 | 12;
   original: number;
   discounted: number;
 }
@@ -12,6 +12,14 @@ export interface PricingPlan {
 }
 
 export const plans: PricingPlan[] = [
+  {
+    key: 'basic',
+    icon: '⭐',
+    highlight: false,
+    durations: [
+      { months: 1, original: 80, discounted: 80 },
+    ],
+  },
   {
     key: 'plateau',
     icon: '🏋️',

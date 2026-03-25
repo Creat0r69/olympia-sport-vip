@@ -14,7 +14,7 @@ export default function Pricing() {
       </div>
 
       {/* 2-column plan grid */}
-      <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
         {plans.map((plan) => (
           <div
             key={plan.key}
@@ -45,9 +45,11 @@ export default function Pricing() {
                     {t('months', { count: d.months })}
                   </span>
                   <div className="text-right">
-                    <span className="text-muted/40 text-xs line-through block">
-                      {d.original} dt
-                    </span>
+                    {d.original !== d.discounted && (
+                      <span className="text-muted/40 text-xs line-through block">
+                        {d.original} dt
+                      </span>
+                    )}
                     <span className="text-accent font-black text-xl">
                       {d.discounted} dt
                     </span>
